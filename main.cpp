@@ -10,11 +10,11 @@
 int main()
 {
     std::cout << "Nemausa" << std::endl;
-    //creational::factory::main();
+    creational::factory::main();
     //creational::singleton::main();
     //creational::builder::main();
     //behavioral::proxy::main();
     //behavioral::state::main();
-    behavioral::mediator::main();
+    //behavioral::mediator::main();
     return 0;
 }

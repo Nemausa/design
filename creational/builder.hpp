@@ -30,22 +30,22 @@ namespace creational
           public:
             DistrWorkPackage(char *type)
             {
-                sprintf(_desc, "Distributed Work Package for: %s", type);
+                sprintf_s(_desc, "Distributed Work Package for: %s", type);
             }
             void setFile(char *f, char *v)
             {
-                sprintf(_temp, "\n  File(%s): %s", f, v);
-                strcat(_desc, _temp);
+                sprintf_s(_temp, "\n  File(%s): %s", f, v);
+                strcat_s(_desc, _temp);
             }
             void setQueue(char *q, char *v)
             {
-                sprintf(_temp, "\n  Queue(%s): %s", q, v);
-                strcat(_desc, _temp);
+                sprintf_s(_temp, "\n  Queue(%s): %s", q, v);
+                strcat_s(_desc, _temp);
             }
             void setPathway(char *p, char *v)
             {
-                sprintf(_temp, "\n  Pathway(%s): %s", p, v);
-                strcat(_desc, _temp);
+                sprintf_s(_temp, "\n  Pathway(%s): %s", p, v);
+                strcat_s(_desc, _temp);
             }
             const char *getState()
             {
