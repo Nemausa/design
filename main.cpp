@@ -6,11 +6,13 @@
 #include "behavioral/proxy2.hpp"
 #include "behavioral/state.hpp"
 #include "behavioral/mediator.hpp"
+#include "other/switch.hpp"
 
 int main()
 {
     std::cout << "Nemausa" << std::endl;
-    creational::factory::main();
+    other::sw::main();
+    //creational::factory::main();
     //creational::singleton::main();
     //creational::builder::main();
     //behavioral::proxy::main();
