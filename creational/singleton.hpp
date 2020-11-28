@@ -11,38 +11,53 @@ namespace creational
       namespace singleton
       {
           /**
-            * The Singleton class defines the `GetInstance` method that serves as an
+            * The singleton class defines the `GetInstance` method that serves as an
             * alternative to constructor and lets clients access the same instance of this
             * class over and over.
             */
-          class Singleton
+          class singleton
           {
 
             /**
-            * The Singleton's constructor/destructor should always be private to
+            * The singleton's constructor/destructor should always be private to
             * prevent direct construction/desctruction calls with the `new`/`delete`
             * operator.
             */
           private:
-              static Singleton *pinstance_;
+              static singleton *pinstance_;
               static std::mutex mutex_;
 
           protected:
-              Singleton(const std::string value) : value_(value)
+              singleton(const std::string value) : value_(value)
               {
               }
-              ~Singleton() {}
+              ~singleton() {}
               std::string value_;
+              class gargc
+              {
+              public:
+                ~gargc()
+                {
+                  if (singleton::pinstance_)
+                  {
+                    delete singleton::pinstance_;
+                    singleton::pinstance_ = 0;
+                    std::cout << "delete singleton::pinstance_" << std::endl;
+                  }
+                  
+                }
+              };
+              static gargc gc;
 
-          public:
+            public:
               /**
-              * Singletons should not be cloneable.
+              * singletons should not be cloneable.
               */
-              Singleton(Singleton &other) = delete;
+              singleton(singleton &other) = delete;
               /**
-                * Singletons should not be assignable.
+                * singletons should not be assignable.
                 */
-              void operator=(const Singleton &) = delete;
+              void operator=(const singleton &) = delete;
               /**
                 * This is the static method that controls the access to the singleton
                 * instance. On the first run, it creates a singleton object and places it
@@ -50,7 +65,7 @@ namespace creational
                 * object stored in the static field.
                 */
 
-              static Singleton *GetInstance(const std::string &value);
+              static singleton *GetInstance(const std::string &value);
               /**
                 * Finally, any singleton should define some business logic, which can be
                 * executed on its instance.
@@ -70,22 +85,23 @@ namespace creational
             * Static methods should be defined outside the class.
             */
 
-          Singleton *Singleton::pinstance_{nullptr};
-          std::mutex Singleton::mutex_;
+          singleton *singleton::pinstance_{nullptr};
+          singleton::gargc singleton::gc;
+          std::mutex singleton::mutex_;
 
           /**
             * The first time we call GetInstance we will lock the storage location
             * and then we make sure again that the variable is null and then we
             * set the value. RU:
             */
-          Singleton *Singleton::GetInstance(const std::string &value)
+          singleton *singleton::GetInstance(const std::string &value)
           {
               if(pinstance_ == nullptr)
               {
                   std::lock_guard<std::mutex> lock(mutex_);
                   if (pinstance_ == nullptr)
                   {
-                    pinstance_ = new Singleton(value);
+                    pinstance_ = new singleton(value);
                   }
               }
               
@@ -96,7 +112,7 @@ namespace creational
           {
               // Following code emulates slow initialization.
               std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-              Singleton *singleton = Singleton::GetInstance("FOO");
+              singleton *singleton = singleton::GetInstance("FOO");
               std::cout << singleton->value() << "\n";
           }
 
@@ -104,7 +120,7 @@ namespace creational
           {
               // Following code emulates slow initialization.
               std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-              Singleton *singleton = Singleton::GetInstance("BAR");
+              singleton *singleton = singleton::GetInstance("BAR");
               std::cout << singleton->value() << "\n";
           }
 

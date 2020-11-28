@@ -12,14 +12,14 @@
 int main()
 {
     std::cout << "Nemausa" << std::endl;
-    other::sw::main();
+    //other::sw::main();
     //creational::factory::main();
     //creational::singleton::main();
     //creational::builder::main();
     //behavioral::proxy::main();
     //behavioral::state::main();
     //behavioral::mediator::main();
-
-    behavioral::observer::client_code();
+    //behavioral::observer::client_code();
+    creational::singleton::main();
     return 0;
 }
