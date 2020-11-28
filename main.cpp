@@ -7,6 +7,7 @@
 #include "behavioral/state.hpp"
 #include "behavioral/mediator.hpp"
 #include "other/switch.hpp"
+#include "behavioral/observer.hpp"
 
 int main()
 {
@@ -18,5 +19,7 @@ int main()
     //behavioral::proxy::main();
     //behavioral::state::main();
     //behavioral::mediator::main();
+
+    behavioral::observer::client_code();
     return 0;
 }
