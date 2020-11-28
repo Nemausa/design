@@ -110,7 +110,7 @@
                 "Debug",
                 "Release",
                 "RelWithDebInfo",
-                "MinSizeRel",
+                "MinSizeRel"
             ],
             "default": "Debug"
         },
@@ -125,7 +125,7 @@
                 "x86_arm",
                 "x86_amd64",
                 "amd64_x86",
-                "amd64_arm",
+                "amd64_arm"
             ],
             "default": "amd64"
         },
@@ -136,7 +136,7 @@
             "options": [
                 "14.2", // 2019
                 "14.1", // 2017
-                "14.0", // 2015
+                "14.0" // 2015
             ],
             "default": "14.2"
         }

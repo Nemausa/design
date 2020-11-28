@@ -18,7 +18,7 @@ namespace behavioral
             Widget(FileSelectionDialog *mediator, char *name)
             {
                 _mediator = mediator;
-                strcpy_s(_name, name);
+                strcpy(_name, name);
             }
             virtual ~Widget() {}
             virtual void changed();

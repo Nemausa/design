@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 
+STRING( REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR} ) 
+PROJECT(${CURRENT_FOLDER})
 
 add_definitions(-w)
 
 
 if (WIN32)
-    message("using gcc Compiler")
+    message("This is Windows")
     add_compile_options("/W4")
 elseif(APPLE)
-   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++14 -pthread")
+    message("This is Apple")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++11 -pthread")
+    message("This is Windows")
 elseif(UNIX)
-    
+    message("This is Linux")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++11 -pthread")
 endif()
 
 
@@ -20,9 +25,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/structural
 )
 
-STRING( REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR} ) 
 
-PROJECT(${CURRENT_FOLDER})
 
 FILE(GLOB SRC_LIST_CPP ${PROJECT_SOURCE_DIR}/*.cpp)
 

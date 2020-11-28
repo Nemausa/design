@@ -2,12 +2,17 @@
 #include "creational/factory.hpp"
 #include "creational/singleton.hpp"
 #include "creational/builder.hpp"
-#include "behavioral/proxy.hpp"
-#include "behavioral/proxy2.hpp"
+#include "creational/prototype.hpp"
+
+#include "behavioral/observer.hpp"
 #include "behavioral/state.hpp"
 #include "behavioral/mediator.hpp"
+
+#include "structural/composite.hpp"
+#include "structural/proxy.hpp"
+#include "structural/proxy2.hpp"
+
 #include "other/switch.hpp"
-#include "behavioral/observer.hpp"
 
 int main()
 {
@@ -16,10 +21,13 @@ int main()
     //creational::factory::main();
     //creational::singleton::main();
     //creational::builder::main();
+    //creational::singleton::main();
+    creational::prototype::main();
     //behavioral::proxy::main();
     //behavioral::state::main();
     //behavioral::mediator::main();
     //behavioral::observer::client_code();
-    creational::singleton::main();
+    //structural::composite::main();
+
     return 0;
 }
